@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ticket_xamarin.Views.ItemsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:ticket_xamarin.ViewModels"  
+             xmlns:model="clr-namespace:ticket_xamarin.Models"  
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add.png" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    
+    <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10,20,10,10"
+                                 x:DataType="model:Ticket"
+                                 Margin="10,5"
+                                 BackgroundColor="#dfe6e9">
+
+                        <Label Text="{Binding NameCompleto}"
+                               LineBreakMode="NoWrap"
+                               Style="{DynamicResource ListItemTextStyle}"
+                               FontSize="18"
+                               TextTransform="Uppercase"
+                               TextColor="#2c2c54"
+                               Margin="5,0"
+                               FontAttributes="Italic,Bold"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center" />
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="125" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Cédula : "
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   TextColor="#4834d4"
+                                   FontAttributes="Bold"
+                                   TextTransform="Uppercase"
+                                   VerticalTextAlignment="Center"
+                                   Padding="20,0,0,0"
+                                   HorizontalTextAlignment="Start" />
+
+                            <Label Grid.Column="1"
+                                   Text="{Binding Cedula}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="12"
+                                   Padding="20,0,0,0"
+                                   TextColor="#333"
+                                   FontAttributes="Italic"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center" />
+
+                            <Label Grid.Row="1"
+                                   Text="Origen : "
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   TextColor="#4834d4"
+                                   FontAttributes="Bold"
+                                   TextTransform="Uppercase"
+                                   VerticalTextAlignment="Center"
+                                   Padding="20,0,0,0"
+                                   HorizontalTextAlignment="Start" />
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Origen}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="12"
+                                   Padding="20,0,0,0"
+                                   TextColor="#333"
+                                   FontAttributes="Italic"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center" />
+
+                            <Label Grid.Row="2"
+                                   Text="Destino : "
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   TextColor="#4834d4"
+                                   FontAttributes="Bold"
+                                   TextTransform="Uppercase"
+                                   VerticalTextAlignment="Center"
+                                   Padding="20,0,0,0"
+                                   HorizontalTextAlignment="Start" />
+
+                            <Label Grid.Row="2"
+                                   Grid.Column="1"
+                                   Text="{Binding Destino}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="12"
+                                   Padding="20,0,0,0"
+                                   TextColor="#333"
+                                   FontAttributes="Italic"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center" />
+
+                            <Label Grid.Row="3"
+                                   Text="Precio : "
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   TextColor="#4834d4"
+                                   FontAttributes="Bold"
+                                   TextTransform="Uppercase"
+                                   VerticalTextAlignment="Center"
+                                   Padding="20,0,0,0"
+                                   HorizontalTextAlignment="Start" />
+
+                            <Label Grid.Row="3"
+                                   Grid.Column="1"
+                                   Text="{Binding Precio}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="12"
+                                   Padding="20,0,0,0"
+                                   TextColor="#333"
+                                   FontAttributes="Italic"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center" />
+
+                            <Label Grid.Row="4"
+                                   Text="Cantidad : "
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   TextColor="#4834d4"
+                                   FontAttributes="Bold"
+                                   TextTransform="Uppercase"
+                                   VerticalTextAlignment="Center"
+                                   Padding="20,0,0,0"
+                                   HorizontalTextAlignment="Start" />
+
+                            <Label Grid.Row="4"
+                                   Grid.Column="1"
+                                   Text="{Binding Cantidad}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="12"
+                                   Padding="20,0,0,0"
+                                   TextColor="#333"
+                                   FontAttributes="Italic"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center" />
+
+                            <Label Grid.Row="5"
+                                   Text="Iva : "
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   TextColor="#4834d4"
+                                   FontAttributes="Bold"
+                                   TextTransform="Uppercase"
+                                   VerticalTextAlignment="Center"
+                                   Padding="20,0,0,0"
+                                   HorizontalTextAlignment="Start" />
+
+                            <Label Grid.Row="5"
+                                   Grid.Column="1"
+                                   Text="{Binding Iva}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="12"
+                                   Padding="20,0,0,0"
+                                   TextColor="#333"
+                                   FontAttributes="Italic"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center" />
+
+                            <Label Grid.Row="6"
+                                   Text="Total a Pagar : "
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   TextColor="#4834d4"
+                                   FontAttributes="Bold"
+                                   TextTransform="Uppercase"
+                                   VerticalTextAlignment="Center"
+                                   Padding="20,0,0,0"
+                                   HorizontalTextAlignment="Start" />
+
+                            <Label Grid.Row="6"
+                                   Grid.Column="1"
+                                   Text="{Binding TotPagar}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="12"
+                                   Padding="20,0,0,0"
+                                   TextColor="#333"
+                                   FontAttributes="Italic"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center" />
+
+                            <Button Text="Eliminar"
+                                    TextTransform="Uppercase"
+                                    FontSize="12"
+                                    FontAttributes="Bold,Italic"
+                                    Grid.Row="7"
+                                    Grid.RowSpan="2"
+                                    Grid.ColumnSpan="2"
+                                    TextColor="#fff"
+                                    BackgroundColor="#eb4d4b"
+                                    Margin="20,0"
+                                    CornerRadius="6"
+                                    VerticalOptions="Center"
+                                    x:Name="DeleteVenta"
+                                    CommandParameter="{Binding Id}"
+                                    Clicked="DeleteVenta_Clicked" />
+                        </Grid>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"
+                                                  CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

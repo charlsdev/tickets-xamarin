@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ticket_xamarin.Views.AboutPage"
+             xmlns:vm="clr-namespace:ticket_xamarin.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:WelcomeViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#ffbe76</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout BackgroundColor="{StaticResource Accent}"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                    <ContentView Padding="0,5,0,5"
+                                 VerticalOptions="FillAndExpand">
+                        <Image Source="ticket.png"
+                               VerticalOptions="Center"
+                               HeightRequest="264" />
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical"
+                             Padding="25,10,25,24"
+                             Spacing="10">
+                    <Label Text="Sistema de Ticket"
+                           FontAttributes="Bold,Italic"
+                           HorizontalOptions="Center"
+                           TextTransform="Uppercase"
+                           TextColor="#333"
+                           FontSize="20" />
+                    <Label Text="Se tiene como objetivo tramitar y resolver dichas solicitudes e incidentes de acuerdo con su prioridad, asignando los responsables, rastreando y haciendo seguimiento al progreso de la resolución."
+                           FontSize="16"
+                           Padding="0,0,0,0" />
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
